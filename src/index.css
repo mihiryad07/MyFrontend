@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: 'Inter', sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff80;
+  --text-accent: #00d4ff;
+  --border-primary: rgba(255, 255, 255, 0.1);
+  --border-secondary: rgba(255, 255, 255, 0.2);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] {
+  --bg-primary: #F0F5FF;   /* Soft premium sky blue */
+  --bg-secondary: #FFF0F6; /* Soft premium blush pink */
+  --bg-tertiary: #F3EBFF;  /* Soft premium lavender */
+  --text-primary: #111827; /* Darker slate for sharper contrast */
+  --text-secondary: #4B5563; /* Medium slate */
+  --text-accent: #6366F1;  /* Vibrant Indigo */
+  --border-primary: rgba(255, 255, 255, 0.5); /* Frosty borders */
+  --border-secondary: rgba(255, 255, 255, 0.8);
+  --glass-bg: rgba(255, 255, 255, 0.65); /* Beautiful frosted glass look */
+  --glass-border: rgba(255, 255, 255, 0.8);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.light-notification {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  backdrop-filter: blur(20px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cyber-grid {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 20px; }
+}
+
+.cyber-grid-bg {
+  background-image: linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: cyber-grid 20s linear infinite;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.neon-border {
+  border: 1px solid;
+  border-image: linear-gradient(45deg, #00d4ff, #9333ea, #ec4899) 1;
+}
+
+@layer utilities {
+  .shadow-soft {
+    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+  }
+  .shadow-neon {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+  }
+  .animate-shimmer {
+    background: linear-gradient(90deg, rgba(241,245,249,1) 0%, rgba(226,232,240,1) 40%, rgba(241,245,249,1) 100%);
+    background-size: 400% 100%;
+    animation: shimmer 1.6s linear infinite;
+  }
+  .text-glow {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  }
+}
+
+/* Light theme overrides for better readability and subtle aesthetics */
+.light-theme .text-white {
+  color: var(--text-primary) !important;
+}
+.light-theme .text-white\/80 {
+  color: var(--text-secondary) !important;
+}
+.light-theme .text-white\/70, .light-theme .text-white\/60 {
+  color: #666666 !important;
+}
+.light-theme .border-white\/10 {
+  border-color: var(--glass-border) !important;
+}
+.light-theme .bg-white\/10, .light-theme .bg-white {
+  background-color: var(--glass-bg) !important;
+  backdrop-filter: blur(16px) !important;
+}
+.light-theme .glass-effect {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(16px) !important;
+  border-color: var(--glass-border) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+}
+.light-theme .shadow-neon,
+.light-theme .shadow-neon-cyan,
+.light-theme .hover\:shadow-neon-cyan:hover,
+.light-theme .hover\:shadow-neon-green:hover,
+.light-theme .hover\:shadow-neon-purple:hover {
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.08) !important;
+}
+.light-theme .text-glow {
+  text-shadow: none !important;
+}
+.light-theme .animate-pulse-neon {
+  animation: none !important;
+}
+.light-theme .cyber-grid-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px) !important;
+}
+
+/* Accent colors muted in light mode */
+.light-theme .text-neon-cyan { color: #319795 !important; }      /* Teal */
+.light-theme .text-neon-green { color: #2B6CB0 !important; }     /* Soft blue */
+.light-theme .text-neon-purple { color: #805AD5 !important; }    /* Muted purple */
+.light-theme .text-neon-orange { color: #D69E2E !important; }    /* Soft gold */
+.light-theme .text-neon-pink { color: #D53F8C !important; }      /* Soft pink */
+
+.light-theme .bg-neon-cyan\/20, .light-theme .bg-neon-green\/20, .light-theme .bg-neon-purple\/20 {
+  background-color: rgba(43, 108, 176, 0.08) !important;
+}
+.light-theme .bg-neon-green\/10 {
+  background-color: rgba(43, 108, 176, 0.04) !important;
+}
+.light-theme .border-neon-cyan\/30, .light-theme .border-neon-green\/30 {
+  border-color: rgba(43, 108, 176, 0.15) !important;
+}
+
+/* Premium pastel gradient glows for light mode */
+.light-theme .from-neon-cyan\/20, .light-theme .from-neon-cyan\/10 {
+  --tw-gradient-from: rgba(99, 102, 241, 0.15) !important; /* Soft Indigo Glow */
+}
+.light-theme .via-neon-orange\/20, .light-theme .via-neon-orange\/10 {
+  --tw-gradient-stops: var(--tw-gradient-from), rgba(236, 72, 153, 0.12), var(--tw-gradient-to, rgba(236, 72, 153, 0)) !important; /* Soft Pink Glow */
+}
+.light-theme .to-neon-pink\/20, .light-theme .to-neon-pink\/10 {
+  --tw-gradient-to: rgba(139, 92, 246, 0.15) !important; /* Soft Violet Glow */
+}
+
+.light-theme .from-neon-cyan, .light-theme .from-neon-purple {
+  --tw-gradient-from: #6366F1 !important; /* Indigo */
+  --tw-gradient-to: #A855F7 !important;   /* Purple */
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+.light-theme .to-neon-green, .light-theme .to-neon-pink, .light-theme .to-neon-orange {
+  --tw-gradient-to: #EC4899 !important;   /* Pink */
+}
